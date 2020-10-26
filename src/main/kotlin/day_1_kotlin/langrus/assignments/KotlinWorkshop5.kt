@@ -27,15 +27,34 @@ class Bicycle: Transport(1) {
 //  См. ниже.
 // ? Имена классов и файлов Котлин принято называть с заглавной буквы, в формате "camelCase".
 // Например: "SomeLongClassName"
-//interface ...
+interface Nosebleed {
+    fun makeSound()
+}
 
 // TODO 2: Создай свои собственные классы, например "Bus" и "Car".
 //  Эти классы не будут полностью написаны с нуля, они должны расширять общий класс "Transport",
 //  и дополнительно реализовывать придуманный тобой интерфейс.
 // ? Класс может наследовать только один класс, но реализовывать несколько интерфейсов, например:
 // class Kitty(): Cat, Cuteable, Sleepable, Furryable {}
-//class Bus ...
-//class Car ...
+class Bus(passengersCount: Int = 30) : Transport(passengersCount), Nosebleed {
+    override fun drive() {
+        println("Drive a bus")
+    }
+
+    override fun makeSound() {
+        println("Bib bib")
+    }
+}
+
+class Car(passengersCount: Int = 4) : Transport(passengersCount), Nosebleed {
+    override fun drive() {
+        println("Drive a car")
+    }
+
+    override fun makeSound() {
+        println("Vrum vrum")
+    }
+}
 
 // TODO 3: Протестируй работоспособность твоего транспорта.
 object VehiclesTest {
@@ -50,17 +69,22 @@ object VehiclesTest {
 
     private fun testBus() {
         println("Testing how bus drives...")
-//        val bus = ...
+        val bus = Bus()
+        bus.drive()
+        bus.makeSound()
     }
 
     private fun testCar() {
         println("Testing how car drives...")
-//        val car = ...
+        val car = Car(2)
+        car.drive()
+        car.makeSound()
     }
 
     private fun testBicycle() {
         println("Testing how bicycle drives...")
-//        ...
+        val bicycle = Bicycle()
+        bicycle.drive()
     }
 
 
@@ -72,8 +96,8 @@ object VehiclesTest {
     //  не принадлежащие к данному набору.
     private fun testBusParts() {
         println("Testing bus's feature 1...")
-
-
+        val test: Nosebleed = Bus()
+        test.makeSound()
         println("Testing bus's feature 2...")
 
     }
