@@ -1,5 +1,7 @@
 package day_1_kotlin.langrus.assignments
 
+import java.time.Instant
+
 // Workshop #6 - special classes, objects, data classes
 
 
@@ -7,31 +9,37 @@ package day_1_kotlin.langrus.assignments
 /* Рабочая зона */
 
 // TODO 1: Добавь в data class 2-4 свойства.
-// data class VideoGame(...)
+data class VideoGame(
+    val author: String,
+    val releaseDate: Instant,
+    val type: Genre,
+    val playerCount: Int,
+    val name: String = "unknown"
+)
 
 // TODO 2: Создай объект "VideoGamesTest", который будет использоваться для тестирования игр.
-// ... VideoGamesTest {
+ object VideoGamesTest {
 
       // Раскомментируй после объявления объекта.
-//    @JvmStatic
-//    fun main(args: Array<String>)  {
+    @JvmStatic
+    fun main(args: Array<String>)  {
         // TODO 3: Создай экземпляр класса "VideoGame".
         //  Создай копию игры с помощью функции ата класса ".copy()", сохрани копию в другой переменной.
-        // val game =
-        // val copy =
+         val game = VideoGame("Bad ass", Instant.now(), Genre.ACTION, 2)
+         val copy = game.copy()
 
         // TODO 4: Выведи в консоль результат сравнения игры и её копии, используя оператор сравнения "==".
         //  Результат должен быть типа Boolean "true".
-//        val equal = false
-//        println("Objects are equal $equal")
+        val equal = game == copy
+        println("Objects are equal $equal")
 
         // TODO 5: Создай массив игр. В момент создания, наполни его несколькими играми и массив в консоль.
-//        val games = arrayOf(game, copy, ...)
-//        games.forEach {
-//            // print
-//        }
-//    }
-//}
+        val games = arrayOf(game, copy, VideoGame("Rat club", Instant.now(), Genre.RPG, 1))
+        games.forEach {
+            println(it)
+        }
+    }
+}
 
 
 
@@ -41,13 +49,11 @@ package day_1_kotlin.langrus.assignments
 //  Добавь его, как новое свойство класса "VideoGame".
 //  Поправь созданные сущности видеоигр в коде коде воркшопа.
 //  Запусти выполнение функции "main()" и посмотри результат.
-/*
-... Genre {
-    ...,
-    ...,
-    ...
+enum class Genre {
+    ACTION,
+    RPG,
+    SHOOTER
 }
-* */
 
 // TODO 7: Добавь новое свойство класса "VideoGame", присвой ему значение "по-умолчанию".
 //  Как ты можешь убедиться, новое свойство со значением "по-умолчанию" не требует делать исправлений в таком коде.
