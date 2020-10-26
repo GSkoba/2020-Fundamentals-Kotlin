@@ -22,14 +22,13 @@ object KotlinWorkshop7 {
         )
 
 
-
         /* Рабочая зона */
 
         // TODO 1: Распечатай "poem" в двух вариантах:
         //  1. Только отфильтрованные строки длиной короче 12 символов;
         //  2. Все строки в обратном порядке.
         val filtered = poem.filter { it.length <= 12 }
-        val reversed = poem.map { it.reversed() }
+        val reversed = poem.reversed()
         println(filtered)
         reversed.forEach { println(it) }
         println(reversed)
@@ -44,14 +43,12 @@ object KotlinWorkshop7 {
         println(evenList)
 
 
-
         // Не исправляй! Дано:
         val weatherMap = mutableMapOf(
             "Moscow" to 2,
             "St. Petersburg" to -1,
             "Minsk" to 4
         )
-
 
 
         /* Бонусные задания */
@@ -62,9 +59,8 @@ object KotlinWorkshop7 {
 
         // TODO 4. Отфильтруй и выведи в консоль города с погодой выше +0С.
         //  Вызывай операторы один за другим, в виде "цепи" (chaining operators).
-        weatherMap.filter { it.value > 0 }.forEach {
-            city, weather ->
-            println("$city $weather")
-        }
+        weatherMap
+            .filter { it.value > 0 }
+            .forEach { (city, weather) -> println("$city $weather") }
     }
 }

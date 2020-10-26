@@ -7,7 +7,6 @@ package day_1_kotlin.langrus.assignments
  */
 
 // TODO 1: make maxLength const that is visible only inside the Person class
-val maxLength = 12
 
 // TODO 2: make companionConstant part of companion object
 val companionConstant = 12
@@ -17,15 +16,16 @@ class Person(phoneCode: String) {
     val code = if (phoneCode.length > maxLength) phoneCode.subSequence(0, maxLength) else phoneCode
 
     companion object {
-        // TODO 2
+        const val maxLength = 12
     }
 
     // * * * Bonus task * * * (work on home)
 
     //TODO 3: make this fun as extension to a list outside the Person class
-    private fun replacePlacesWithThePhoneCode(list: List<Any>, placeNum: Int = 3) {
-        list.mapIndexed { index, any -> if (index % placeNum == 0) code else any}
-    }
+}
+
+private fun List<Any>.replacePlacesWithThePhoneCode(person: Person, placeNum: Int = 3) {
+    this.mapIndexed { index, any -> if (index % placeNum == 0) person.code else any}
 }
 
 fun main(){
@@ -35,9 +35,9 @@ fun main(){
 
 
     // TODO: uncomment after finishing TODO 1
-    //  println(Person.maxLength)
+      println(Person.maxLength)
 
     //TODO *: uncomment after doing function
-    // lst.replacePlacesWithThePhoneCode(p, 4)
+     lst.replacePlacesWithThePhoneCode(p, 4)
 }
 
