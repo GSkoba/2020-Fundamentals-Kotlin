@@ -25,8 +25,7 @@ object KotlinWorkshop1 {
         val nullableElvisString: String? = null
         val nullableAssertionString: String? = "потенциально null"
         val emptyString = ""
-
-
+        
         /* Рабочая зона */
 
         // TODO 1: Раскомментируй.
